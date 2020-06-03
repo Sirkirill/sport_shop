@@ -17,7 +17,6 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from django.urls import path, re_path
 from rest_framework_swagger.views import get_swagger_view
-from profiles.urls import  sections_router
 
 from profiles.urls import subscription_router, sections_router, users_router
 

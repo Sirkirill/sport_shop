@@ -93,6 +93,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
@@ -172,10 +173,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
-
 REST_AUTH_SERIALIZERS = {
     "USER_DETAILS_SERIALIZER": "profiles.serializers.UserDetailsSerializer",
 }
+
 
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
 STATICFILES_DIRS = (

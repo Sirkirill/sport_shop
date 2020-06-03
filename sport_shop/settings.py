@@ -125,6 +125,7 @@ STATICFILES_DIRS = (
 WSGI_APPLICATION = 'sport_shop.wsgi.application'
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = True
+ALLOWED_HOSTS = ('shielded-bayou-12986.herokuapp.com', )
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases

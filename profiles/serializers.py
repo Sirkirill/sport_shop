@@ -28,9 +28,9 @@ class SectionSerializer(serializers.ModelSerializer):
 
 class SubscriptionSerializer(serializers.ModelSerializer):
     user = UserDetailsSerializer(read_only=True)
-    section = SectionSerializer(read_only=True)
+    sections = SectionSerializer(read_only=True)
 
     class Meta:
         model = Subscription
-        fields = ('user', 'section', 'date_started')
+        fields = ('user', 'sections', 'date_started')
         read_only_fields = ('date_started',)

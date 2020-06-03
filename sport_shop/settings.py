@@ -28,7 +28,7 @@ SECRET_KEY = config('SECRET_KEY')
 DEBUG = True
 
 AUTH_USER_MODEL = 'profiles.User'
-ALLOWED_HOSTS = ['*']
+
 SITE_ID = 1
 
 AUTHENTICATION_BACKENDS = (
@@ -135,7 +135,6 @@ DATABASES = {
     )
 }
 
-
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
 
@@ -154,7 +153,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
@@ -168,7 +166,6 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
@@ -176,7 +173,6 @@ STATIC_URL = '/static/'
 REST_AUTH_SERIALIZERS = {
     "USER_DETAILS_SERIALIZER": "profiles.serializers.UserDetailsSerializer",
 }
-
 
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
 STATICFILES_DIRS = (

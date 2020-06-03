@@ -1,6 +1,7 @@
 from allauth.account.models import EmailConfirmationHMAC
 from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
+from rest_framework import viewsets, permissions, mixins, status
 from rest_framework import viewsets, permissions, status
 from rest_framework.decorators import action
 from rest_framework.response import Response
@@ -17,7 +18,12 @@ def confirm_email(request, key):
     return HttpResponseRedirect(reverse_lazy('api'))
 
 
-class SectionsViewSet(viewsets.ModelViewSet):
+class SectionsViewSet(mixins.ListModelMixin,
+                      mixins.CreateModelMixin,
+                      mixins.RetrieveModelMixin,
+                      mixins.UpdateModelMixin,
+                      mixins.DestroyModelMixin,
+                      viewsets.GenericViewSet):
     """
     ViewSet to manage sections
     """
@@ -25,16 +31,52 @@ class SectionsViewSet(viewsets.ModelViewSet):
     serializer_class = SectionSerializer
     http_method_names = ['get', 'post', 'put', 'delete']
 
+    def get(self, request, *args, **kwargs):
+        return self.list(request, *args, **kwargs)
 
-class UsersItemViewSet(viewsets.ModelViewSet):
+    def post(self, request, *args, **kwargs):
+        return self.create(request, *args, **kwargs)
+
+    def delete(self, request, *args, **kwargs):
+        return self.destroy(request, *args, **kwargs)
+
+
+class UsersItemViewSet(mixins.ListModelMixin,
+                       mixins.CreateModelMixin,
+                       mixins.RetrieveModelMixin,
+                       mixins.UpdateModelMixin,
+                       mixins.DestroyModelMixin,
+                       viewsets.GenericViewSet):
     queryset = User.objects.all()
     serializer_class = UserDetailsSerializer
     http_method_names = ['get', 'post', 'put', 'delete']
-    pass
+
+    def get(self, request, *args, **kwargs):
+        return self.list(request, *args, **kwargs)
+
+    def post(self, request, *args, **kwargs):
+        return self.create(request, *args, **kwargs)
+
+    def delete(self, request, *args, **kwargs):
+        return self.destroy(request, *args, **kwargs)
 
 
-class SubscriptionsViewSet(viewsets.ModelViewSet):
+class SubscriptionsViewSet(mixins.ListModelMixin,
+                           mixins.CreateModelMixin,
+                           mixins.RetrieveModelMixin,
+                           mixins.UpdateModelMixin,
+                           mixins.DestroyModelMixin,
+                           viewsets.GenericViewSet):
+
     queryset = Subscription.objects.all()
     serializer_class = SubscriptionSerializer
     http_method_names = ['get', 'post', 'put', 'delete']
-    pass
+
+    def get(self, request, *args, **kwargs):
+        return self.list(request, *args, **kwargs)
+
+    def post(self, request, *args, **kwargs):
+        return self.create(request, *args, **kwargs)
+
+    def delete(self, request, *args, **kwargs):
+        return self.destroy(request, *args, **kwargs)

@@ -17,14 +17,17 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from django.urls import path, re_path
 from rest_framework_swagger.views import get_swagger_view
+from profiles.urls import  sections_router
 
+from profiles.urls import subscription_router, sections_router, users_router
 
 schema_view = get_swagger_view(title='Collections API')
 
 urlpatterns = [
-    re_path(r'sections/', include('profiles.urls')),
     url(r'^$', schema_view, name='api'),
     path('admin/', admin.site.urls),
     re_path(r'rest-auth/', include('profiles.auth_urls')),
+    re_path(r'^', include('profiles.urls')),
+
 ]
 

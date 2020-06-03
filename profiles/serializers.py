@@ -16,9 +16,12 @@ class UserDetailsSerializer(serializers.ModelSerializer):
 
 class SectionSerializer(serializers.ModelSerializer):
     """
-    Team serializer
+    Section serializer
     """
-    section = serializers.PrimaryKeyRelatedField(read_only=True)
-    creator = serializers.SerializerMethodField()
-    device = serializers.SerializerMethodField(read_only=True)
+
+    class Meta:
+        model = Section
+        fields = ('name', 'coach', 'info',
+                  'price', 'schedule', 'date_created')
+        read_only_fields = ('date_created', 'coach')
 
